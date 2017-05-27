@@ -1,0 +1,20 @@
+﻿<h1>Add Course</h1>
+<form>
+    <div class="form-group">
+        <label for="dept">Departments</label>
+        <select id="dept" class="form-control" (change)="onMakeChange()"  name="teachers" [(ngModel)]="teachers" >
+            <option value="">Please Select</option>
+            <option *ngFor="let d of dept" value="{{ d.id }}">{{ d.deptName }}</option>
+        </select>
+    </div>
+    <div class="formgroup">
+        <label for="teacher">Teachers</label>
+        <select id="teachers" class="form-control">
+           <!--<option value="">Please Select</option>
+            <option *ngFor="let t of teachers" value="{{ t.id }}">{{ t.teacherName }}</option>-->
+            <option value="">Please Select</option>
+            <option *ngFor="let t of courses" value="{{ t.id }}">{{ t.teacherName }}</option>
+
+        </select>
+    </div>
+</form>

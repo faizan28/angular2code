@@ -22,7 +22,7 @@ namespace test_angular.Controllers
             this.context = context;
 
         }
-        [HttpGet("/api/makes")]
+        [HttpGet("/api/dept")]
         public async Task <IEnumerable<Resources.DeptResource>> GetDept()
         {
             var depts= await context.Dept.Include(m => m.Teachers).ToListAsync();

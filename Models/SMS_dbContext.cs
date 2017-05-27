@@ -18,8 +18,8 @@ namespace test_angular.Models
         {
             //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
            
-            //optionsBuilder.UseSqlServer(@"Server=corei5-pc;Database=SMS_db;Trusted_Connection=True;");
-            optionsBuilder.UseSqlServer(@"Server = tcp:faizan.database.windows.net, 1433; Initial Catalog = server2; Persist Security Info = False; User ID = anchro28; Password = Mobile786!; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;");
+            optionsBuilder.UseSqlServer(@"Server=corei5-pc;Database=SMS_db;Trusted_Connection=True;");
+            //optionsBuilder.UseSqlServer(@"Server = tcp:faizan.database.windows.net, 1433; Initial Catalog = server2; Persist Security Info = False; User ID = anchro28; Password = Mobile786!; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;");
 
         }
 

@@ -1,20 +1,95 @@
 ﻿<h1>Add Course</h1>
-<form>
+<form (ngSubmit)="Submit()" validate>
     <div class="form-group">
+
+        <div *ngIf="!dept" class="alert alert-info" role="alert">
+            <a href="#" class="alert-link">Loading.... </a>
+        </div>
+
         <label for="dept">Departments</label>
-        <select id="dept" class="form-control" (change)="onMakeChange()"  name="teachers" [(ngModel)]="teachers" >
+        <select id="dept" class="form-control" (change)="onMakeChange()" name="dept" [(ngModel)]="teachers" required #dept1="ngModel">
             <option value="">Please Select</option>
             <option *ngFor="let d of dept" value="{{ d.id }}">{{ d.deptName }}</option>
         </select>
     </div>
-    <div class="formgroup">
+    <!--<div class="formgroup">
         <label for="teacher">Teachers</label>
-        <select id="teachers" class="form-control">
-           <!--<option value="">Please Select</option>
-            <option *ngFor="let t of teachers" value="{{ t.id }}">{{ t.teacherName }}</option>-->
+        <select id="teachers" class="form-control"  name="teacher" [(ngModel)]="selectedTeacher" >
             <option value="">Please Select</option>
-            <option *ngFor="let t of courses" value="{{ t.id }}">{{ t.teacherName }}</option>
+            <option *ngFor="let t of selectedTeacher" value="{{ t.id }}">{{ t.teacherName }}</option>
 
-        </select>
+
+        </select>CourseName
+    </div>-->
+
+{{deptvalue | json}}
+
+    <div class="form-group">
+        <label>Enter Course Name</label>
+        <input type="text" pTooltip="Enter New Teacher Name" tooltipPosition="top" tooltipEvent="focus" value="" class="form-control" [(ngModel)]="newTeacher.teacherName" [ngModelOptions]="{standalone: true}" name="name" required #course1="ngModel" />
+     <!--   <div class="alert alert-danger" *ngIf="!course1.valid">Please Specify</div>-->
     </div>
-</form>
+        <div>
+
+            <button pButton type="submit" label="Insert" class="btn btn-default" icon="fa-check" name="Submit" [disabled]="!course1.valid || dept.valid"></button>
+        </div>
+   
+        
+    
+
+    </form>
+
+<!--<h1>Counter</h1>
+<p>This is a simple example of an Angular 2 component.</p>
+<p>Current count: <strong>{{ currentCount }}</strong></p>
+<p-growl [value]="msgs"></p-growl>
+<button pButton 
+        type="button" 
+        (click)="incrementCounter()" 
+        label="Increment" 
+        icon="fa-check"
+        class="ui-button-info">
+</button>-->
+
+<table class='table' *ngIf="dept">
+    <thead>
+        <tr>
+            <th>deptid</th>
+            <th>depname</th>
+            <th>Teachers</th>
+            
+            
+        </tr>
+    </thead><tbody>
+ 
+                <tr *ngFor="let forecast of dept">
+                    <td>{{ forecast.id }}</td>
+                    <td>{{ forecast.deptName }}</td>
+                    <td>
+
+                        <ul *ngFor="let teacher of forecast.teachers">
+                            <li>
+                                {{teacher.teacherName}}
+                            </li>
+                            <button id={{teacher.id}} class="btn btn-danger" name={{teacher.teacherName}} label="Delte" (click)="do($event)">Delete</button>
+                            
+                            <button pButton
+                                    id={{teacher.id}}
+                                    type="button"
+                                    (click)="do($event)"
+                                    label="Edit"
+                                    class="ui-button-info"></button>
+                        </ul>
+                    </td>
+                    
+
+
+                </tr>
+
+
+</tbody>
+
+</table>
+
+
+

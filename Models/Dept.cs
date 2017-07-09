@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace test_angular.Models
 {
@@ -8,10 +8,11 @@ namespace test_angular.Models
     {
         public Dept()
         {
-            Teachers = new Collection<Teachers>();
+            Teachers = new HashSet<Teachers>();
         }
 
         public int Id { get; set; }
+        [Required]
         public string DeptName { get; set; }
 
         public virtual ICollection<Teachers> Teachers { get; set; }

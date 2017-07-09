@@ -11,6 +11,7 @@ using Microsoft.Extensions.Logging;
 using test_angular.Models;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
+using Newtonsoft.Json;
 
 namespace test_angular
 {
@@ -36,6 +37,9 @@ namespace test_angular
             // Add framework services.
             services.AddAutoMapper();
             services.AddMvc();
+            services.AddMvc().AddJsonOptions(options => {
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

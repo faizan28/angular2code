@@ -8,10 +8,10 @@ module.exports = (env) => {
     const isDevBuild = !(env && env.prod);
     const sharedConfig = {
         stats: { modules: false },
-        resolve: { extensions: [ '.js' ] },
+        resolve: { extensions: ['.js'] },
         module: {
             rules: [
-                { test: /\.(png|woff|woff2|eot|ttf|svg)(\?|$)/, use: 'url-loader?limit=100000' }
+                { test: /\.(png|gif|woff|woff2|eot|ttf|svg)(\?|$)/, use: 'url-loader?limit=100000' }
             ]
         },
         entry: {
@@ -25,12 +25,20 @@ module.exports = (env) => {
                 '@angular/platform-browser',
                 '@angular/platform-browser-dynamic',
                 '@angular/router',
+            
                 'bootstrap',
                 'bootstrap/dist/css/bootstrap.css',
                 'es6-shim',
                 'es6-promise',
                 'event-source-polyfill',
+
+                'ng2-toasty',
+                'ng2-toasty/bundles/style-bootstrap.css',
                 'jquery',
+                'font-awesome/css/font-awesome.css',
+                'primeng/primeng',
+                'primeng/resources/themes/omega/theme.css',
+                'primeng/resources/primeng.min.css', 
                 'zone.js',
             ]
         },

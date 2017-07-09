@@ -6,7 +6,18 @@ export class DeptService {
 
     constructor(private http: Http) { }
     getdept() {
-        return this.http.get('api/dept')
+        return this.http.get('api/Depts')
+            .map(res => res.json());
+    }
+ 
+    create(teacher)
+    {
+        return this.http.post('api/Teachers', teacher)
+            .map(res => res.json());
+    }
+    delete(id)
+    {
+        return this.http.delete('api/Teachers/' + id)
             .map(res => res.json());
     }
 }
